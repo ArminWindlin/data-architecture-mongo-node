@@ -3,8 +3,8 @@ const {Parent} = require('./models');
 module.exports.createData = () => {
 
     let index = 0;
-    for (let y = 0; y < 4; y++) {
-        for (let x = 0; x < 4; x++) {
+    for (let y = 0; y < 10; y++) {
+        for (let x = 0; x < 10; x++) {
 
             let nature = 'region-test';
             // determine code
