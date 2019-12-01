@@ -9,10 +9,31 @@ db.once('open', function() {
     run();
 });
 
-function run() {
-    let ms = Date.now();
-    Parent.find({}, (err, parents) => {
-        if (err) return console.error(err);
-        console.log(Date.now() - ms);
-    });
+async function run() {
+    try {
+        // GET everything
+        let ms = Date.now();
+        let parents = await Parent.find({});
+        console.log('GET all Parents wit Childs:\n' + (Date.now() - ms));
+
+        // GET one parent with children
+        ms = Date.now();
+        let parent = await Parent.findOne({index: 5});
+        console.log('GET one Parent wit Childs:\n' + (Date.now() - ms));
+
+        // GET one child
+        ms = Date.now();
+        let match = {
+            index: 5,
+        };
+        let projection = {
+            child: {$arrayElemAt: ['$children', 25]},
+        };
+        let child = await Parent.aggregate([{$match: match}, {$project: projection}]);
+        // console.log(child[0].child);
+        console.log('GET one Child:\n' + (Date.now() - ms));
+
+    } catch (err) {
+        console.error(err);
+    }
 }
