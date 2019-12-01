@@ -1,4 +1,4 @@
-const {Parent} = require('./models');
+const {Parent} = require('./models/model4');
 
 module.exports.createData = () => {
 
@@ -19,8 +19,6 @@ module.exports.createData = () => {
                 'units': [100, 200, 300, 400, 500, 600, 700],
                 'xPos': x,
                 'yPos': y,
-                'parent': -1,
-                'parentCode': 'none',
                 'layer': 2,
                 'index': index,
                 'recruiting': [0, 1, 2],

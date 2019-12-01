@@ -61,12 +61,6 @@ const parentSchema = new mongoose.Schema({
     recruiting: [Number],
     children: [Object],
     skills: Object,
-    adjacent: {
-        left: {type: Number, default: -1},
-        right: {type: Number, default: -1},
-        up: {type: Number, default: -1},
-        down: {type: Number, default: -1},
-    },
 });
 
-module.exports.Parent = mongoose.model('Parent', parentSchema);
+module.exports.Parent = mongoose.model('Parent4', parentSchema);

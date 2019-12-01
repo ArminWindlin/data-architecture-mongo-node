@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {Parent} = require('./models');
+const {Parent} = require('./models/model4');
 
 // Setup database connection
 mongoose.connect('mongodb://localhost/testing', {useUnifiedTopology: true, useNewUrlParser: true});
@@ -8,6 +8,14 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
     run();
 });
+
+// GOAL //
+// GET everything
+// GET one parent (without children)
+// GET one child
+// GET all children of one parent
+// UPDATE one parent
+// UPDATE one child
 
 async function run() {
     try {
