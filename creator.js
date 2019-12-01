@@ -7,15 +7,9 @@ module.exports.createData = () => {
         for (let x = 0; x < 10; x++) {
 
             let nature = 'region-test';
-            // determine code
-            // cL = codeLetter
-            // cN = codeNumber
-            let cL = numberToLetter(y + 1);
-            let cN = x + 1;
-            let fieldCode = cL + cN;
 
             // determine units and fields
-            let children = createChildren(index, fieldCode);
+            let children = createChildren(index);
 
             // Save region
             const parentO = {
@@ -29,11 +23,9 @@ module.exports.createData = () => {
                 'parentCode': 'none',
                 'layer': 2,
                 'index': index,
-                'code': fieldCode,
                 'recruiting': [0, 1, 2],
                 'children': children.childs,
                 'child': children.portalIndex,
-                'skills': getSkills(nature),
                 'team': '',
             };
             const parent = new Parent(parentO);
@@ -45,7 +37,7 @@ module.exports.createData = () => {
     }
 };
 
-function createChildren(parentIndex, parentCode) {
+function createChildren(parentIndex) {
     let childs = [];
     let index = 0;
     let portalIndex = 0;
@@ -54,14 +46,6 @@ function createChildren(parentIndex, parentCode) {
         for (let x = 0; x < 10; x++) {
 
             let nature = 'child-test';
-
-            // determine code
-            // cL = codeLetter
-            // cN = codeNumber
-            let cL = numberToLetter(y + 1);
-            let cN = x + 1;
-            let fieldCode = cL + cN;
-
             if (nature === 'portal')
                 portalIndex = index;
 
@@ -75,12 +59,10 @@ function createChildren(parentIndex, parentCode) {
                 'xPos': x,
                 'yPos': y,
                 'parent': parentIndex,
-                'parentCode': parentCode,
                 'layer': 1,
                 'index': index,
-                'code': fieldCode,
                 'recruiting': [1, 4],
-                'skills': getSkills(nature),
+                'skills': getSkills(),
                 'team': '',
             };
 
@@ -94,66 +76,7 @@ function createChildren(parentIndex, parentCode) {
     };
 }
 
-function numberToLetter(number) {
-    switch (number) {
-        case 1:
-            return 'A';
-        case 2:
-            return 'B';
-        case 3:
-            return 'C';
-        case 4:
-            return 'D';
-        case 5:
-            return 'E';
-        case 6:
-            return 'F';
-        case 7:
-            return 'G';
-        case 8:
-            return 'H';
-        case 9:
-            return 'I';
-        case 10:
-            return 'J';
-        case 11:
-            return 'K';
-        case 12:
-            return 'L';
-        case 13:
-            return 'M';
-        case 14:
-            return 'N';
-        case 15:
-            return 'O';
-        case 16:
-            return 'P';
-        case 17:
-            return 'Q';
-        case 18:
-            return 'R';
-        case 19:
-            return 'S';
-        case 20:
-            return 'T';
-        case 21:
-            return 'U';
-        case 22:
-            return 'V';
-        case 23:
-            return 'W';
-        case 24:
-            return 'X';
-        case 25:
-            return 'Y';
-        case 26:
-            return 'Z';
-        default:
-            return 'Z';
-    }
-}
-
-function getSkills(nature) {
+function getSkills() {
     return {
         activated: [],
         silverStones: 18,
@@ -164,9 +87,9 @@ function getSkills(nature) {
         recruiting: 0,
         creating: 1,
         effects: {
-            immune: nature === 'starter' || nature === 'region-starter',
-            extraSpeed: nature === 'starter',
-            extraAttack: nature === 'starter',
+            immune: true,
+            extraSpeed: false,
+            extraAttack: true,
             magicSleep: false,
             rift: false,
         },

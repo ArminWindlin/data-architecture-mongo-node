@@ -50,10 +50,6 @@ const parentSchema = new mongoose.Schema({
         type: Number,
         required: 'enter index of the field',
     },
-    code: {
-        type: String,
-        required: 'enter code of the field',
-    },
     team: {
         type: String,
         default: '',
