@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const creator = require('./creator1');
+const creator = require('./creator4');
 
 // Setup database connection
 mongoose.connect('mongodb://localhost/testing', {useUnifiedTopology: true, useNewUrlParser: true});

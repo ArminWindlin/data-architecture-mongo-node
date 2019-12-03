@@ -38,14 +38,6 @@ const parentSchema = new mongoose.Schema({
         type: Number,
         required: 'enter layer of the field',
     },
-    parent: {
-        type: Number,
-        required: 'enter parent of the field',
-    },
-    parentCode: {
-        type: String,
-        required: 'enter parent code of the field',
-    },
     index: {
         type: Number,
         required: 'enter index of the field',
