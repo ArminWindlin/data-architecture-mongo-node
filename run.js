@@ -10,15 +10,7 @@ db.once('open', function() {
     run();
 });
 
-// GOAL //
-// GET one parent (without children)
-// GET all parents (without children)
-// GET one child
-// GET all children
-// GET all children of one parent
-// UPDATE one parent
-// UPDATE one child
-
+// Queries //
 // GET one parent (without children) > gop
 // GET all parents (without children) > gap
 // GET one child > goc
@@ -27,8 +19,9 @@ db.once('open', function() {
 // UPDATE one parent > uop
 // UPDATE one child > uoc
 
-// 2 > Reference model
-// 3 > Nesting model
+// Database structures //
+// Reference model > 2
+// 3Nesting model > 3
 
 async function run() {
     let numberOfTests = 100;
