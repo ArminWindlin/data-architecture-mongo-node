@@ -1,4 +1,4 @@
-const {Parent, Child} = require('./models/model1');
+const {Parent, Child} = require('../models/model1');
 
 module.exports.createData = () => {
 

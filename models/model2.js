@@ -102,7 +102,6 @@ const childSchema = new mongoose.Schema({
         default: '',
     },
     recruiting: [Number],
-    children: [Object],
     skills: Object,
 });
 

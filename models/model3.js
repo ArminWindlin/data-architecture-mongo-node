@@ -55,4 +55,4 @@ const parentSchema = new mongoose.Schema({
     skills: Object,
 });
 
-module.exports.Parent = mongoose.model('Parent4', parentSchema);
+module.exports.Parent3 = mongoose.model('Parent3', parentSchema);

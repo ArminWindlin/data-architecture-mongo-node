@@ -1,4 +1,4 @@
-const {Parent} = require('./models/model4');
+const {Parent2, Child2} = require('../models/model2');
 
 module.exports.createData = () => {
 
@@ -22,11 +22,10 @@ module.exports.createData = () => {
                 'yPos': y,
                 'layer': 2,
                 'recruiting': [0, 1, 2],
-                'children': children.childs,
-                'child': children.portalIndex,
+                'children': children,
                 'team': '',
             };
-            const parent = new Parent(parentO);
+            const parent = new Parent2(parentO);
             parent.save((err, field) => {
                 if (err) console.log('Error creating world: ' + err);
             });
@@ -47,7 +46,9 @@ function createChildren(parentIndex) {
             if (nature === 'portal')
                 portalIndex = index;
 
-            let child = {
+            let childO = {
+                'index': index,
+                'parent': parentIndex,
                 'number': 'x' + x + 'y' + y,
                 'owner': 'npc',
                 'nature': nature,
@@ -56,22 +57,21 @@ function createChildren(parentIndex) {
                 'units': [10, 20, 30, 40, 50, 60, 70],
                 'xPos': x,
                 'yPos': y,
-                'parent': parentIndex,
                 'layer': 1,
-                'index': index,
                 'recruiting': [1, 4],
                 'skills': getSkills(),
                 'team': '',
             };
 
-            childs.push(child);
+            const child = new Child2(childO);
+            child.save((err, field) => {
+                if (err) console.log('Error creating world: ' + err);
+            });
+            childs.push(index);
             index++;
         }
     }
-    return {
-        childs: childs,
-        portalIndex: portalIndex,
-    };
+    return childs;
 }
 
 function getSkills() {
